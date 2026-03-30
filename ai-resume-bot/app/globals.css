@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* 漸層文字 */
+  .gradient-text {
+    background: linear-gradient(135deg, #9b8eff 0%, #d860b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* 輸入框底部彩虹光暈 */
+  .input-halo::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 5%;
+    right: 5%;
+    height: 18px;
+    background: linear-gradient(
+      90deg,
+      #9b8eff, #d860b0, #f97316, #60b8ff, #9b8eff
+    );
+    border-radius: 0 0 14px 14px;
+    filter: blur(10px);
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  /* 自訂捲軸 */
+  .custom-scroll::-webkit-scrollbar { width: 4px; }
+  .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background: #ede9fe;
+    border-radius: 2px;
+  }
+
+  /* Typing dots */
+  .typing-dot { animation: blink 1.2s infinite; }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+}
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.2; transform: translateY(0); }
+  40%            { opacity: 1;   transform: translateY(-4px); }
+}
